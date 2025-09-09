@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TechShop Design System - Computer Parts E-commerce */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Tech Professional */
+    --background: 0 0% 100%;
+    --foreground: 218 24% 12%;
+
+    /* Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 218 24% 12%;
+
+    /* Tech Blue Primary - Professional & Trustworthy */
+    --primary: 218 91% 20%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 218 91% 35%;
+
+    /* Warm Gray Secondary - Approachable */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 218 24% 12%;
+
+    /* Orange Accent - Action & Energy */
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 24 95% 95%;
+
+    /* Success Green - Stock & Discounts */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 142 76% 95%;
+
+    /* System Colors */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 218 91% 20%;
+
+    /* Design System Tokens */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 12px hsl(var(--primary) / 0.08);
+    --shadow-card-hover: 0 8px 24px hsl(var(--primary) / 0.12);
+    --shadow-button: 0 2px 8px hsl(var(--accent) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Product Card Animation */
+  .product-card {
+    @apply transition-all duration-300 ease-out;
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Cart Animation */
+  .cart-bounce {
+    animation: cartBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Hero Gradient Text */
+  .hero-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-accent to-accent/90 text-accent-foreground;
+    @apply hover:from-accent/90 hover:to-accent transform hover:scale-105;
+    @apply transition-all duration-200 ease-out;
+    box-shadow: var(--shadow-button);
+  }
+
+  .btn-secondary-outline {
+    @apply border-2 border-primary text-primary bg-transparent;
+    @apply hover:bg-primary hover:text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes cartBounce {
+    0%, 20%, 53%, 80%, 100% {
+      transform: translate3d(0,0,0) scale(1);
+    }
+    40%, 43% {
+      transform: translate3d(0,-8px,0) scale(1.1);
+    }
+    70% {
+      transform: translate3d(0,-4px,0) scale(1.05);
+    }
+    90% {
+      transform: translate3d(0,-1px,0) scale(1.02);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in-up {
+    animation: slideInUp 0.4s ease-out;
+  }
+
+  /* Search and Loading Animations */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes searchExpand {
+    from {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-search-expand {
+    animation: searchExpand 0.2s ease-out;
+  }
+
+  /* Responsive improvements */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Mobile search improvements */
+    input[type="text"] {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+
+  /* Focus improvements for accessibility */
+  input:focus,
+  button:focus,
+  select:focus {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Smooth transitions for better UX */
+  * {
+    transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
